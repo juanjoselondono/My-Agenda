@@ -3,7 +3,6 @@ import { Modal, StyleSheet, Text, Pressable, View, TextInput, SafeAreaView} from
 import { AntDesign } from '@expo/vector-icons'; 
 import {Picker} from '@react-native-picker/picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 export default function CreateTask ({taskVisible, setTaskVisible, createTask, reload}){
   const [text, onChangeText] = useState('');
@@ -129,24 +128,12 @@ export default function CreateTask ({taskVisible, setTaskVisible, createTask, re
                     <Pressable style={styles.form_item_input} onPress={showDatePicker}>
                       <Text style = {styles.form_item_label}>Select Date</Text>
                     </Pressable>
-                    <DateTimePickerModal
-                        isVisible={isDatePickerVisible}
-                        mode="date"
-                        onConfirm={handleConfirmDate}
-                        onCancel={hideDatePicker}
-                    />
                 </View>
                 <View style = {styles.form_item_date}>
                 <Text style = {styles.form_item_title}>Deadline Time</Text>
                     <Pressable style={styles.form_item_input} onPress={showTimePicker}>
                         <Text style = {styles.form_item_label}>Select Time</Text>
                     </Pressable>
-                    <DateTimePickerModal
-                        isVisible={isTimePickerVisible}
-                        mode="time"
-                        onConfirm={handleConfirmTime}
-                        onCancel={hideTimePicker}
-                    />
                 </View>
                 <View style = {styles.form_item}>
                   <Pressable onPress={()=>{createNewTask()}} style={{backgroundColor:'#00b4fc', marginTop:'10%', elevation:10, marginRight:'10%', marginLeft:'10%', borderRadius:20}}>

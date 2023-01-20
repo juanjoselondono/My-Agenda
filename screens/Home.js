@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Alert, Pressable, ScrollView } from 'react-native';
+import { StyleSheet, View, Alert, Pressable, ScrollView, SafeAreaView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Task from '../components/Task';
 import Details from '../components/Details';
@@ -49,7 +49,7 @@ export default function Home() {
         getData()
     }, [])
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
         <View style = {{display:'flex', flexDirection:'row', width:'100%', justifyContent:'space-evenly', marginBottom:'10%'}}>
             <Pressable onPress = {()=>{setCreateTaskVisible(true)}}>
                 <Ionicons name="add-circle" size={40} color="black" />
@@ -75,7 +75,7 @@ export default function Home() {
         <Details modal={modal} setModal={setModal}></Details>
         <SortData reload = {getData} modal= {sortModal}  setModal = {setSortModal}></SortData>
         <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
+    marginTop:'10%'
   }, 
   taskContainer:{
     alignContent:'center', 
