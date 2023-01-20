@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     width:'100%',
-    height:'80%'
+    height:'100%'
   },
   sort_item:{
     textAlign:'center',
@@ -110,6 +110,7 @@ const styles = StyleSheet.create({
   },
   sort_item_text:{
     textAlign:'center',
-    fontSize:20
+    fontSize:20,
+    fontFamily:'Monserrat'
   }
 })

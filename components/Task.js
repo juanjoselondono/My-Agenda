@@ -106,12 +106,12 @@ export default function Task({setModal, TaskObject,  reload}) {
                   </Text>
               </View>
               <View style = {styles.item_bottom}>
-                  <Text>{sliceString(TaskObject.description, 40)}</Text>
+                  <Text style = {styles.description}>{sliceString(TaskObject.description, 40)}</Text>
               </View>
               {
                   TaskObject.deadline_date != undefined &&
                   <View style = {{display:'flex', flexDirection:'row', marginTop:10, justifyContent:'space-evenly', alignItems:'center'}}>
-                      <Text>Deadline :</Text>
+                      <Text style= {{ fontFamily:'Monserrat'}}>Deadline :</Text>
                       <View>
                         <Text>{parseDate(TaskObject.deadline_date)}</Text>
                         {
@@ -155,6 +155,10 @@ const styles = StyleSheet.create({
         borderRadius:20
     }, 
     priority:{
-        fontWeight:'600'
+        fontWeight:'700',
+        fontFamily:'Monserrat',
+    },
+    description:{
+      fontFamily:'Monserrat'
     }
 })

@@ -7,6 +7,7 @@ import Details from '../components/Details';
 import CreateTask from '../components/CreateTask'
 import SortData from '../components/SortData';
 import { Ionicons,MaterialCommunityIcons,MaterialIcons } from '@expo/vector-icons'; 
+import Quotes from '../components/Quotes';
 export default function Home() {
     const[tasksList, setTasksList] = useState([])
     const [sortModal, setSortModal]= useState(false)
@@ -50,6 +51,7 @@ export default function Home() {
     }, [])
   return (
     <SafeAreaView style={styles.container}>
+        <Quotes></Quotes>
         <View style = {{display:'flex', flexDirection:'row', width:'100%', justifyContent:'space-evenly', marginBottom:'10%'}}>
             <Pressable onPress = {()=>{setCreateTaskVisible(true)}}>
                 <Ionicons name="add-circle" size={40} color="black" />
