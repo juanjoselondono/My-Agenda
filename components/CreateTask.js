@@ -108,7 +108,7 @@ export default function CreateTask ({taskVisible, setTaskVisible, createTask, re
                             setSelectCategory(itemValue)
                         }>
                         <Picker.Item label="Personal" value="personal" />
-                        <Picker.Item label="University" value="uiversity" />
+                        <Picker.Item label="University" value="university" />
                     </Picker>
                 </View>
                 <View style = {styles.form_item}>
@@ -168,7 +168,6 @@ const styles = StyleSheet.create({
   },
   modalView: {
     backgroundColor: 'white',
-    borderRadius: 20,
     padding: 35,
     alignItems: 'center',
     shadowColor: '#000',

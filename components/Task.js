@@ -38,6 +38,16 @@ export default function Task({setModal, TaskObject,  reload}) {
       return []
     }
   }
+  const getDone = async () => {
+    const value = await AsyncStorage.getItem('@logs_done')
+    if(value !== null) {
+        // value previously stored
+      return value
+    }
+    else{
+      return []
+    }
+  }
   useEffect(()=>{
       setDate(new Date())
   }, [])
@@ -61,17 +71,29 @@ export default function Task({setModal, TaskObject,  reload}) {
   }
  function sliceString(str, n_words) {
     return str.slice(0, n_words)+ '...';
+  }  
+  async function createDone(selectedItem){
+    const arrayOfDone = []
+    var data = await getDone()
+    if(typeof(data) == 'string'){
+      data = JSON.parse(data)
+    }
+    data.forEach(element => {
+      arrayOfDone.push(element)
+    });
+    arrayOfDone.push(selectedItem)
+    await storeData(arrayOfDone, '@logs_done')
+
   }
+
   async function handleDone(selectedItem){
     var datos = await getData()
     datos = JSON.parse(datos)
     datos = datos.filter(element => JSON.stringify(element) != JSON.stringify(selectedItem))
-    var filteredItem = datos.filter(element => JSON.stringify(element) == JSON.stringify(selectedItem))
-    console.log(datos)
     await storeData(datos, '@logs_task')
-    await storeData(filteredItem, '@logs_done')
+    await createDone(selectedItem)
     await reload()
-  }  
+  }
   async function handleDelete(selectedItem){
     var datos = await getData()
     datos = JSON.parse(datos)
@@ -137,7 +159,7 @@ const styles = StyleSheet.create({
     container: {
         width:250,
         height: 150,
-        marginBottom:10,
+        marginBottom:30,
     },
     item_top:{
         display: 'flex',

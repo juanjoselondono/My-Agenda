@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, Alert, Pressable, ScrollView, SafeAreaView } from 'react-native';
+import { Ionicons,MaterialCommunityIcons,MaterialIcons } from '@expo/vector-icons'; 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Task from '../components/Task';
 import Details from '../components/Details';
 import CreateTask from '../components/CreateTask'
 import SortData from '../components/SortData';
-import { Ionicons,MaterialCommunityIcons,MaterialIcons } from '@expo/vector-icons'; 
 import Quotes from '../components/Quotes';
+import Stage from '../components/Stage';
+
 export default function Home() {
     const[tasksList, setTasksList] = useState([])
     const [sortModal, setSortModal]= useState(false)
@@ -64,7 +66,7 @@ export default function Home() {
             </Pressable>
         </View>
         <CreateTask reload = {getData} createTask = {storeData} taskVisible={createTaskVisible} setTaskVisible = {setCreateTaskVisible}></CreateTask>
-            <ScrollView contentContainerStyle = {styles.scrollview}>
+            <ScrollView   showsVerticalScrollIndicator={false} contentContainerStyle = {styles.scrollview}>
                 <View style={styles.taskContainer}>
                 {
                     tasksList != [] &&
@@ -76,6 +78,7 @@ export default function Home() {
             </ScrollView>
         <Details modal={modal} setModal={setModal}></Details>
         <SortData reload = {getData} modal= {sortModal}  setModal = {setSortModal}></SortData>
+        <Stage reloadTasks = {getData} reload = {tasksList}></Stage>
         <StatusBar style="auto" />
     </SafeAreaView>
   );
@@ -93,9 +96,10 @@ const styles = StyleSheet.create({
     alignItems:'center',
     display:'flex',
     flexDirection:'column',
-    width:'100%'
+    width:'100%',
+    marginBottom:'20%'
   },
   scrollview:{
     width:'100%',
-  }
+   }
 });
