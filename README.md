@@ -15,7 +15,7 @@ React Native - Expo  agenda app
 Run project with expo
 
 ```bash
-  git clone https://github.com/juanjoselondono/uniagenda.git
+  git clone repolink
   cd uniagenda
   npm install
   npm run start
