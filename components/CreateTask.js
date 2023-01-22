@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Modal, StyleSheet, Text, Pressable, View, TextInput, SafeAreaView} from 'react-native';
 import { AntDesign } from '@expo/vector-icons'; 
 import {Picker} from '@react-native-picker/picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import Category from './Category';
 
 export default function CreateTask ({taskVisible, setTaskVisible, createTask, reload}){
   const [text, onChangeText] = useState('');
@@ -13,6 +14,8 @@ export default function CreateTask ({taskVisible, setTaskVisible, createTask, re
   const [selectedTime, setSelectedTime] = useState(undefined)
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
+  const [listOfCategory, setListOfCategory] = useState([])
+  const [reloadCategory, setReloadCategory] = useState([])
 
   const getData = async () => {
     const value = await AsyncStorage.getItem('@logs_task')
@@ -45,6 +48,17 @@ export default function CreateTask ({taskVisible, setTaskVisible, createTask, re
     setSelectedTime(date)
     hideTimePicker();
   };
+  const getCategory = async () => {
+    const value = await AsyncStorage.getItem('@logs_category')
+    if(value !== null) {
+        // value previously stored
+      setListOfCategory(JSON.parse(value))
+      return value
+    }
+    else{
+      return []
+    }
+  } 
   async function createNewTask(){
     const arrayOfTasks = []
     var data = await getData()
@@ -71,6 +85,9 @@ export default function CreateTask ({taskVisible, setTaskVisible, createTask, re
       reload()
     })
   }
+  useEffect(()=>{
+    getCategory()
+  }, [reloadCategory])
   return (
       <Modal
         animationType="slide"
@@ -101,14 +118,22 @@ export default function CreateTask ({taskVisible, setTaskVisible, createTask, re
                 </View>
                 <View style = {styles.form_item}>
                     <Text style = {styles.form_item_title}>Category</Text>
+                    <Category Reload = {setReloadCategory}></Category>
                     <Picker
                         prompt='Select Category'
                         selectedValue={selectedCategory}
                         onValueChange={(itemValue, itemIndex) =>
                             setSelectCategory(itemValue)
                         }>
-                        <Picker.Item label="Personal" value="personal" />
-                        <Picker.Item label="University" value="university" />
+                        {
+                          JSON.stringify(listOfCategory) == JSON.stringify([]) &&
+                          <Picker.Item label="None" value="none" />
+                        }
+                        {
+                          listOfCategory.map((item)=>(
+                            <Picker.Item key = {item} label={item} value={item} />
+                          ))
+                        }
                     </Picker>
                 </View>
                 <View style = {styles.form_item}>

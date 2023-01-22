@@ -12,6 +12,7 @@ import Stage from '../components/Stage';
 
 export default function Home() {
     const[tasksList, setTasksList] = useState([])
+    const[fecha, setFecha] = useState(new Date())
     const [sortModal, setSortModal]= useState(false)
     const [modal, setModal] = useState({
         visible: false,
@@ -50,6 +51,7 @@ export default function Home() {
     }
     useEffect(()=>{
         getData()
+        setFecha(new Date())
     }, [])
   return (
     <SafeAreaView style={styles.container}>
@@ -71,7 +73,7 @@ export default function Home() {
                 {
                     tasksList != [] &&
                     tasksList.map((element)=>(
-                        <Task reload = {getData} key={element._id} TaskObject={element} setModal = {setModal}></Task>
+                        <Task date = {fecha} reload = {getData} key={element._id} TaskObject={element} setModal = {setModal}></Task>
                     ))
                 }
                 </View>

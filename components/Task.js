@@ -18,8 +18,7 @@ const CompareDates = ({ date1, date2 }) => {
     }
 }
   
-export default function Task({setModal, TaskObject,  reload}) {
-  const [date, setDate] = useState(new Date())
+export default function Task({setModal, TaskObject, reload, date}) {
   const storeData = async (value, key) => {
     var json = JSON.stringify(value)
     try {
@@ -48,9 +47,6 @@ export default function Task({setModal, TaskObject,  reload}) {
       return []
     }
   }
-  useEffect(()=>{
-      setDate(new Date())
-  }, [])
   function parseDate(date){
     date = new Date(date)
     var day = date.getUTCDate()

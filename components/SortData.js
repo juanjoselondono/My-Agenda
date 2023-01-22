@@ -61,9 +61,6 @@ export default function SortData({modal, setModal, reload}) {
                         <AntDesign name="closecircleo" size={30} color="black" />
                     </Text>
                 </Pressable>
-                <Pressable onPress={()=>{alert('hi')}} style = {styles.sort_item}>
-                    <Text style = {styles.sort_item_text}>Sort By Category</Text>
-                </Pressable>
                 <Pressable onPress={()=>{sortByCategory()}} style = {styles.sort_item}>
                     <Text style = {styles.sort_item_text}>Sort By Deadline</Text>
                 </Pressable>
@@ -94,7 +91,8 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     width:'100%',
-    height:'100%'
+    height:'100%',
+    justifyContent:'center'
   },
   sort_item:{
     textAlign:'center',
