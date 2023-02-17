@@ -9,7 +9,7 @@ import Category from './Category';
 export default function CreateTask ({taskVisible, setTaskVisible, createTask, reload}){
   const [text, onChangeText] = useState('');
   const [selectedCategory, setSelectCategory] = useState('personal');
-  const [selectedPriority, setSelectedPriority] = useState('high')
+  const [selectedPriority, setSelectedPriority] = useState(1)
   const [selectedDate, setSelectedDate] = useState(undefined)
   const [selectedTime, setSelectedTime] = useState(undefined)
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
@@ -174,7 +174,7 @@ export default function CreateTask ({taskVisible, setTaskVisible, createTask, re
                     />
                 </View>
                 <View style = {styles.form_item}>
-                  <Pressable onPress={()=>{createNewTask()}} style={{backgroundColor:'#00b4fc', marginTop:'10%', elevation:10, marginRight:'10%', marginLeft:'10%', borderRadius:20}}>
+                  <Pressable onPress={()=>{createNewTask()}} style={{backgroundColor:'#d62828', marginTop:'10%', elevation:10, marginRight:'10%', marginLeft:'10%', borderRadius:20}}>
                     <Text style={{padding:10, fontSize:20, textAlign:'center', color:'white',  fontFamily:'Monserrat'}}>Create</Text>
                   </Pressable>
                 </View>
@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
   },
   form_item_title:{
     fontSize:20,
-    color:'#00b4fc',
+    color:'#d62828',
     fontFamily:'Monserrat'
   },
   form_item_label:{

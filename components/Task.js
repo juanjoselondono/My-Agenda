@@ -10,11 +10,11 @@ const CompareDates = ({ date1, date2 }) => {
     d1.setHours(0,0,0,0);
     d2.setHours(0,0,0,0);
     if (d1 > d2) {
-      return <Entypo name="clock" size={24} color="black" />;
+      return <Entypo name="clock" size={30} color="black" />;
     } else if (d1 < d2) {
-      return <Entypo name="warning" size={24} color="red" />;
+      return <Entypo name="warning" size={30} color="red" />;
     } else {
-      return <Entypo name="warning" size={24} color="orange" />;
+      return <Entypo name="warning" size={30} color="orange" />;
     }
 }
   
@@ -135,11 +135,11 @@ export default function Task({setModal, TaskObject, reload, date}) {
                         {
                           TaskObject.deadline_time != undefined &&
                           <View style = {{display:'flex', flexDirection:'row'}}>
-                            <CompareDates date1 = {TaskObject.deadline_date} date2 = {date}></CompareDates>
                             <Text>{parseTime(TaskObject.deadline_time)}</Text>
                           </View>
                         }
                       </View>
+                      <CompareDates date1 = {TaskObject.deadline_date} date2 = {date}></CompareDates>
                   </View>
               }
           </View>

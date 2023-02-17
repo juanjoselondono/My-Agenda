@@ -26,7 +26,6 @@ export default function Details({modal, setModal}) {
     transparent={true}
     visible={modal.visible}
     onRequestClose={() => {
-      Alert.alert('Modal has been closed.');
         setModal({
             visible:false,
             content: {

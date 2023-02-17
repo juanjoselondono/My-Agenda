@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
         marginTop:'5%'
       },
       form_item_button_text:{
-        backgroundColor:'#00b4fc', 
+        backgroundColor:'#d62828', 
         elevation:10,
         borderRadius:20,
         color:'white', 
