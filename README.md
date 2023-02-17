@@ -7,7 +7,7 @@ React Native - Expo  agenda app
   src="https://firebasestorage.googleapis.com/v0/b/website-5e86c.appspot.com/o/projects%2FMyAgenda%20App%2Fwallpaper%2Fscreenshot.png?alt=media&token=41da7916-c668-48a9-9a8f-eb599631e909"
   alt="Alt text"
   title="Optional title"
-  style="display: inline-block; margin: 0 auto; width: 100px">
+  style="justify-self:'center; margin: 0 auto; width: 200px">
   
 ## Author
 
